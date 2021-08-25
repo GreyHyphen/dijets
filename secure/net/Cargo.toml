@@ -1,0 +1,22 @@
+[package]
+name = "dijets-secure-net"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+repository = "https://github.com/dijets/dijets"
+description = "Dijets's Simple Network Substrate"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+once_cell = "1.7.2"
+serde = { version = "1.0.124", features = ["rc"], default-features = false }
+thiserror = "1.0.24"
+
+dijets-logger = { path = "../../common/logger" }
+dijets-secure-push-metrics = { path = "../push-metrics" }
+dijets-workspace-hack = { path = "../../common/workspace-hack" }
+
+[dev-dependencies]
+dijets-config = { path = "../../config" }

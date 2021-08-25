@@ -1,0 +1,51 @@
+[package]
+name = "dijets-key-manager"
+version = "0.1.0"
+edition = "2018"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets Key Manager"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+
+[dependencies]
+anyhow = "1.0.38"
+bcs = "0.1.2"
+once_cell = "1.7.2"
+serde = { version = "1.0.124", features = ["rc"], default-features = false }
+thiserror = "1.0.24"
+
+crash-handler = { path = "../../common/crash-handler" }
+dijets-config = { path = "../../config"}
+dijets-crypto = { path = "../../crypto/crypto" }
+dijets-global-constants = { path = "../../config/global-constants"}
+dijets-logger = { path = "../../common/logger" }
+dijets-client = { path = "../../sdk/client", features = ["blocking"], default-features = false }
+dijets-secure-push-metrics = { path = "../push-metrics" }
+dijets-secure-storage = { path = "../storage" }
+dijets-time-service = { path = "../../common/time-service" }
+dijets-types = { path = "../../types" }
+dijets-workspace-hack = { path = "../../common/workspace-hack" }
+dijets-transaction-builder = { path = "../../sdk/transaction-builder" }
+
+[dev-dependencies]
+futures = "0.3.12"
+rand = "0.8.3"
+tokio = { version = "1.8.1", features = ["full"] }
+
+executor = { path = "../../execution/executor" }
+executor-test-helpers = { path = "../../execution/executor-test-helpers" }
+executor-types = { path = "../../execution/executor-types" }
+dijets-genesis-tool = {path = "../../config/management/genesis", features = ["testing"] }
+dijets-json-rpc = { path = "../../json-rpc", features = ["fuzzing"] }
+dijets-secure-storage = { path = "../storage", features = ["testing"] }
+dijets-time-service = { path = "../../common/time-service", features = ["testing"] }
+dijets-vm = { path = "../../language/dijets-vm" }
+dijetsdb = { path = "../../storage/dijetsdb" }
+storage-interface= { path = "../../storage/storage-interface" }
+vm-validator = { path = "../../vm-validator" }
+
+[features]
+testing = ["dijets-secure-storage/testing", "dijets-time-service/testing" ]
+fuzzing = ["dijetsdb/fuzzing", "dijets-json-rpc/fuzzing", "dijets-config/fuzzing", "dijets-time-service/testing"]

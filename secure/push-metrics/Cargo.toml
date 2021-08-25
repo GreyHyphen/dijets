@@ -1,0 +1,16 @@
+[package]
+name = "dijets-secure-push-metrics"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets dijets-util"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+ureq = { version = "1.5.4", features = ["json", "native-tls"], default-features = false }
+dijets-logger = { path = "../../common/logger" }
+dijets-metrics-core = { path = "../../common/metrics-core" }
+dijets-workspace-hack = { path = "../../common/workspace-hack" }
