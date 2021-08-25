@@ -1,0 +1,38 @@
+[package]
+name = "dijets-management"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets Management is a tool used to manage the configuration of a Dijets Node"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.38"
+hex = "0.4.3"
+serde = { version = "1.0.124", features = ["rc"], default-features = false }
+serde_yaml = "0.8.17"
+structopt = "0.3.21"
+thiserror = "1.0.24"
+toml = { version = "0.5.8", default-features = false }
+
+bcs = "0.1.2"
+dijets-config = { path = ".."}
+dijets-crypto = { path = "../../crypto/crypto" }
+dijets-global-constants = { path = "../global-constants"}
+dijets-network-address-encryption = {path = "network-address-encryption"}
+dijets-secure-storage = { path = "../../secure/storage" }
+dijets-time-service = { path = "../../common/time-service" }
+dijets-types = { path = "../../types" }
+dijets-workspace-hack = { path = "../../common/workspace-hack" }
+dijets-temppath = { path = "../../common/temppath" }
+dijets-transaction-builder = { path = "../../sdk/transaction-builder" }
+
+[dev-dependencies]
+dijets-config = { path = "..", features = ["fuzzing"] }
+
+[features]
+testing = []
+fuzzing = ["dijets-config/fuzzing"]

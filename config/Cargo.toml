@@ -1,0 +1,39 @@
+[package]
+name = "dijets-config"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets dijets-config"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+get_if_addrs = { version = "0.5.3", default-features = false }
+log = { version = "0.4.14", features = ["serde"] }
+mirai-annotations = "1.10.1"
+rand = "0.8.3"
+serde = { version = "1.0.124", features = ["rc"], default-features = false }
+serde_yaml = "0.8.17"
+thiserror = "1.0.24"
+
+bcs = "0.1.2"
+dijets-crypto = { path = "../crypto/crypto" }
+dijets-crypto-derive = { path = "../crypto/crypto-derive" }
+dijets-global-constants = { path = "./global-constants"}
+dijets-logger = { path = "../common/logger" }
+dijets-network-address-encryption = { path = "management/network-address-encryption" }
+dijets-secure-storage = { path = "../secure/storage" }
+dijets-temppath = { path = "../common/temppath" }
+dijets-types = { path = "../types" }
+dijets-workspace-hack = { path = "../common/workspace-hack" }
+short-hex-str = { path = "../common/short-hex-str" }
+
+[dev-dependencies]
+dijets-crypto = { path = "../crypto/crypto", features = ["fuzzing"] }
+
+[features]
+default = []
+fuzzing = ["dijets-crypto/fuzzing", "dijets-types/fuzzing"]
+testing = []

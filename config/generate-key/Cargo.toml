@@ -1,0 +1,18 @@
+[package]
+name = "generate-key"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets generate key"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+rand = "0.8.3"
+
+bcs = "0.1.2"
+dijets-crypto = { path = "../../crypto/crypto/"}
+dijets-temppath = { path = "../../common/temppath" }
+dijets-workspace-hack = { path = "../../common/workspace-hack" }

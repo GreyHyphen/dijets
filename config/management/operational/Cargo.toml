@@ -1,0 +1,47 @@
+[package]
+name = "dijets-operational-tool"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets Management is a tool for operators to manage nodes"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.38"
+base64 = "0.13.0"
+futures = "0.3.12"
+hex = "0.4.3"
+itertools = "0.10.0"
+rand = "0.8.3"
+serde = { version = "1.0.124", features = ["rc"], default-features = false }
+serde_json = "1.0.64"
+serde_yaml = "0.8.17"
+structopt = "0.3.21"
+thiserror = "1.0.24"
+tokio = { version = "1.8.1", features = ["full"] }
+tokio-util = { version = "0.6.4", features = ["compat"] }
+toml = { version = "0.5.8", default-features = false }
+
+bcs = "0.1.2"
+dijets-client = { path = "../../../sdk/client", features = ["blocking"], default-features = false }
+dijets-config = { path = "../.."}
+dijets-crypto = { path = "../../../crypto/crypto" }
+dijets-global-constants = { path = "../../global-constants" }
+dijets-infallible = { path = "../../../common/infallible" }
+dijets-management = { path = ".." }
+dijets-network-address-encryption = {path = "../network-address-encryption"}
+dijets-secure-storage = { path = "../../../secure/storage" }
+dijets-types = { path = "../../../types" }
+dijets-workspace-hack = { path = "../../../common/workspace-hack" }
+dijets-temppath = { path = "../../../common/temppath" }
+fallible = { path = "../../../common/fallible" }
+netcore = { path = "../../../network/netcore" }
+network = { path = "../../../network" }
+dijets-transaction-builder = { path = "../../../sdk/transaction-builder" }
+
+[features]
+testing = []
+fuzzing = ["dijets-config/fuzzing"]

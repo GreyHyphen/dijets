@@ -1,0 +1,44 @@
+[package]
+name = "dijets-genesis-tool"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "A tool to manage genesis"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.38"
+rand = "0.8.3"
+serde = { version = "1.0.124", features = ["rc"], default-features = false }
+structopt = "0.3.21"
+thiserror = "1.0.24"
+toml = { version = "0.5.8", default-features = false }
+
+consensus-types = { path = "../../../consensus/consensus-types" }
+executor = { path = "../../../execution/executor" }
+generate-key = { path = "../../generate-key" }
+bcs = "0.1.2"
+dijets-config = { path = "../.."}
+dijets-crypto = { path = "../../../crypto/crypto" }
+dijets-framework-releases = { path = "../../../language/dijets-framework/releases"}
+dijets-global-constants = { path = "../../global-constants" }
+dijets-management = { path = ".." }
+dijets-network-address-encryption = {path = "../network-address-encryption"}
+dijets-secure-storage = { path = "../../../secure/storage" }
+dijets-types = { path = "../../../types" }
+dijets-workspace-hack = { path = "../../../common/workspace-hack" }
+dijets-temppath = { path = "../../../common/temppath" }
+dijets-vm = { path = "../../../language/dijets-vm" }
+dijetsdb = { path = "../../../storage/dijetsdb" }
+storage-interface = { path = "../../../storage/storage-interface" }
+vm-genesis = { path = "../../../language/tools/vm-genesis" }
+
+[dev-dependencies]
+dijets-config = { path = "../..", features = ["fuzzing"]}
+
+[features]
+testing = []
+fuzzing = ["dijets-config/fuzzing"]

@@ -1,0 +1,26 @@
+[package]
+name = "dijets-network-address-encryption"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Encryption library for network addresses"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+base64 = "0.13.0"
+serde = { version = "1.0.124", features = ["rc"], default-features = false }
+thiserror = "1.0.24"
+
+bcs = "0.1.2"
+dijets-global-constants = { path = "../../global-constants"}
+dijets-infallible = { path = "../../../common/infallible" }
+dijets-logger = { path = "../../../common/logger" }
+dijets-secure-storage = { path = "../../../secure/storage" }
+dijets-types = { path = "../../../types" }
+dijets-workspace-hack = { path = "../../../common/workspace-hack" }
+
+[dev-dependencies]
+rand = "0.8.3"
