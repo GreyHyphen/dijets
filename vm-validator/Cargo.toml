@@ -1,0 +1,40 @@
+[package]
+name = "vm-validator"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets vm validator"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.38"
+fail = "0.4.0"
+scratchpad = { path = "../storage/scratchpad" }
+dijets-state-view = { path = "../storage/state-view" }
+storage-interface = { path = "../storage/storage-interface" }
+dijets-types = { path = "../types" }
+dijets-vm = { path = "../language/dijets-vm" }
+dijets-workspace-hack = { path = "../common/workspace-hack" }
+
+[dev-dependencies]
+rand = "0.8.3"
+
+executor = { path = "../execution/executor" }
+executor-test-helpers = { path = "../execution/executor-test-helpers" }
+dijets-crypto = { path = "../crypto/crypto", features = ["fuzzing"] }
+dijets-temppath = { path = "../common/temppath" }
+dijets-types = { path = "../types", features = ["fuzzing"] }
+dijets-vm = { path = "../language/dijets-vm" }
+dijetsdb = { path = "../storage/dijetsdb", features = ["fuzzing"] }
+storage-service = { path = "../storage/storage-service" }
+dijets-transaction-builder = { path = "../sdk/transaction-builder" }
+vm-genesis = { path = "../language/tools/vm-genesis" }
+move-core-types = { path = "../language/move-core/types" }
+
+[features]
+default = []
+failpoints = ["fail/failpoints"]
+fuzzing = ["dijets-types/fuzzing", "dijets-crypto/fuzzing", "dijetsdb/fuzzing"]
