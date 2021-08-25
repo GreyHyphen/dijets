@@ -1,0 +1,27 @@
+[package]
+name = "executor-types"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets executor interface types"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.38"
+serde = { version = "1.0.124", default-features = false }
+thiserror = "1.0.24"
+
+bcs = "0.1.2"
+dijets-crypto = { path = "../../crypto/crypto" }
+dijets-secure-net = { path = "../../secure/net" }
+dijets-types = { path = "../../types" }
+dijets-workspace-hack = { path = "../../common/workspace-hack" }
+scratchpad = { path = "../../storage/scratchpad" }
+storage-interface = { path = "../../storage/storage-interface" }
+
+[features]
+default = []
+fuzzing = ["dijets-crypto/fuzzing", "dijets-types/fuzzing"]

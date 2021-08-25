@@ -1,0 +1,25 @@
+[package]
+name = "db-bootstrapper"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets DB-Bootstrapper."
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.38"
+structopt = "0.3.21"
+
+executor = { path = "../executor" }
+bcs = "0.1.2"
+dijetsdb = { path = "../../storage/dijetsdb" }
+dijets-config = { path = "../../config" }
+dijets-crypto = { path = "../../crypto/crypto" }
+dijets-temppath = { path = "../../common/temppath" }
+dijets-types = { path = "../../types" }
+dijets-vm = { path = "../../language/dijets-vm" }
+dijets-workspace-hack = { path = "../../common/workspace-hack" }
+storage-interface = { path = "../../storage/storage-interface" }

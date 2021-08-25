@@ -1,0 +1,104 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: {{ include "dijets-fullnode.fullname" . }}
+  labels:
+    {{- include "dijets-fullnode.labels" . | nindent 4 }}
+    app.kubernetes.io/name: fullnode
+spec:
+  serviceName: {{ include "dijets-fullnode.fullname" . }}
+  replicas: 1
+  podManagementPolicy: Parallel
+  selector:
+    matchLabels:
+      {{- include "dijets-fullnode.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/name: fullnode
+  template:
+    metadata:
+      labels:
+        {{- include "dijets-fullnode.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/name: fullnode
+      annotations:
+        seccomp.security.alpha.kubernetes.io/pod: runtime/default
+    spec:
+      terminationGracePeriodSeconds: 0
+      containers:
+      - name: fullnode
+        image: {{ .Values.image.repo }}:{{ .Values.image.tag }}
+        imagePullPolicy: {{ .Values.image.pullPolicy }}
+        command: ["/opt/dijets/bin/dijets-node", "-f", "/opt/dijets/etc/fullnode.yaml"]
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
+        env:
+        {{- if .Values.logging.address }}
+        - name: STRUCT_LOG_TCP_ADDR
+          value: {{ $.Values.logging.address | quote }}
+        {{- end }}
+        - name: RUST_LOG
+          value: {{ .Values.rust_log }}
+        - name: RUST_BACKTRACE
+          value: "1"
+        volumeMounts:
+        - name: dijets-config
+          mountPath: /opt/dijets/etc
+        - name: dijets-genesis
+          mountPath: /opt/dijets/genesis
+        - name: dijets-data
+          mountPath: /opt/dijets/data
+        - name: tmp
+          mountPath: /tmp
+        ports:
+        - containerPort: 6186
+        - containerPort: 8080
+        - containerPort: 9101
+        livenessProbe:
+          tcpSocket:
+            port: 9101
+          initialDelaySeconds: 30
+        readinessProbe:
+          tcpSocket:
+            port: 8080
+        securityContext:
+          readOnlyRootFilesystem: true
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 6180
+        runAsGroup: 6180
+        fsGroup: 6180
+      {{- end }}
+      volumes:
+      - name: dijets-config
+        configMap:
+          name: {{ include "dijets-fullnode.fullname" . }}
+      - name: dijets-genesis
+        configMap:
+          {{- if .Values.chain.genesisConfigmap }}
+          name: {{ .Values.chain.genesisConfigmap }}
+          {{- else }}
+          name: {{ include "dijets-fullnode.fullname" . }}-genesis
+          {{- end }}
+      - name: dijets-data
+        persistentVolumeClaim:
+          claimName: {{ include "dijets-fullnode.fullname" . }}-e{{ .Values.chain.era }}
+      - name: tmp
+        emptyDir: {}
+      serviceAccountName: {{ include "dijets-fullnode.serviceAccountName" . }}
+      {{- if .Values.imagePullSecret }}
+      imagePullSecrets:
+      - name: {{.Values.imagePullSecret}}
+      {{- end }}

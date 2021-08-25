@@ -1,0 +1,42 @@
+[package]
+name = "execution-correctness"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.38"
+rand = { version = "0.8.3", default-features = false }
+
+consensus-types = { path = "../../consensus/consensus-types", default-features = false }
+executor = { path = "../executor" }
+executor-types = { path = "../executor-types" }
+bcs = "0.1.2"
+dijets-config = { path = "../../config" }
+dijets-crypto = { path = "../../crypto/crypto" }
+dijets-global-constants = { path = "../../config/global-constants"}
+dijets-logger = { path = "../../common/logger" }
+dijets-infallible = { path = "../../common/infallible" }
+dijets-secure-net = { path = "../../secure/net" }
+dijets-secure-storage = { path = "../../secure/storage" }
+dijets-temppath = { path = "../../common/temppath" }
+dijets-types = { path = "../../types" }
+dijets-vm = { path = "../../language/dijets-vm" }
+dijets-workspace-hack = { path = "../../common/workspace-hack" }
+serde = { version = "1.0.124", default-features = false }
+storage-client = { path = "../../storage/storage-client" }
+thiserror = "1.0.24"
+# this is actually a dev-dependency (see "Conditional compilation of tests" in coding_guidelines.md)
+executor-test-helpers = { path = "../executor-test-helpers", optional = true }
+
+[dev-dependencies]
+consensus-types = { path = "../../consensus/consensus-types", default-features = false, features = ["fuzzing"] }
+executor-test-helpers = { path = "../executor-test-helpers" }
+dijets-config = { path = "../../config" , features = ["fuzzing"] }
+dijets-genesis-tool = {path = "../../config/management/genesis", features = ["testing"] }
+dijets-transaction-builder = { path = "../../sdk/transaction-builder" }
+
+[features]
+fuzzing = ["dijets-config/fuzzing", "consensus-types/fuzzing"]
