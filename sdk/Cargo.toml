@@ -1,0 +1,30 @@
+[package]
+name = "dijets-sdk"
+version = "0.0.2"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "The Official Dijets SDK"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = ["crates-io"]
+edition = "2018"
+
+[features]
+default = ["client"]
+client = ["dijets-client"]
+
+[dependencies]
+bcs = "0.1"
+rand_core = "0.6.2"
+serde = { version = "1.0.124", features = ["derive"] }
+
+dijets-crypto = { path = "../crypto/crypto", version = "0.0.2" }
+dijets-types = { path = "../types", version = "0.0.2"}
+move-core-types = { path = "../language/move-core/types", version = "0.0.2" }
+dijets-transaction-builder = { path = "./transaction-builder", version = "0.0.2" }
+
+# Optional Dependencies
+dijets-client = { path = "./client", version = "0.0.2", optional = true }
+
+[dev-dependencies]
+dijets-workspace-hack = { path = "../common/workspace-hack" }
