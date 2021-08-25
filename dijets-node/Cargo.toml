@@ -1,0 +1,53 @@
+[package]
+name = "dijets-node"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets node"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+fail = "0.4.0"
+futures = "0.3.12"
+hex = "0.4.3"
+jemallocator = { version = "0.3.2", features = ["profiling", "unprefixed_malloc_on_supported_platforms"] }
+rand = "0.8.3"
+structopt = "0.3.21"
+tokio = { version = "1.8.1", features = ["full"] }
+tokio-stream = "0.1.4"
+
+backup-service = { path = "../storage/backup/backup-service" }
+consensus = { path = "../consensus" }
+crash-handler = { path = "../common/crash-handler" }
+debug-interface = { path = "../common/debug-interface" }
+executor = { path = "../execution/executor" }
+executor-types = { path = "../execution/executor-types" }
+dijets-config = { path = "../config" }
+dijets-crypto = { path = "../crypto/crypto" }
+dijets-framework-releases = { path = "../language/dijets-framework/releases" }
+dijets-genesis-tool = {path = "../config/management/genesis", features = ["testing"] }
+dijets-json-rpc = { path = "../json-rpc" }
+dijets-logger = { path = "../common/logger" }
+dijets-mempool = { path = "../mempool" }
+dijets-metrics = { path = "../common/metrics" }
+dijets-secure-storage = { path = "../secure/storage" }
+dijets-temppath = { path = "../common/temppath" }
+dijets-time-service = { path = "../common/time-service" }
+dijets-types = { path = "../types" }
+dijets-vm = { path = "../language/dijets-vm" }
+dijets-workspace-hack = { path = "../common/workspace-hack" }
+dijetsdb = { path = "../storage/dijetsdb" }
+network-builder = { path = "../network/builder" }
+state-sync = { path = "../state-sync" }
+storage-client = { path = "../storage/storage-client" }
+storage-interface= { path = "../storage/storage-interface" }
+storage-service = { path = "../storage/storage-service" }
+subscription-service = { path = "../common/subscription-service" }
+
+[features]
+default = []
+assert-private-keys-not-cloneable = ["dijets-crypto/assert-private-keys-not-cloneable"]
+failpoints = ["fail/failpoints", "consensus/failpoints", "executor/failpoints", "dijets-json-rpc/failpoints", "dijets-mempool/failpoints", "state-sync/failpoints"]

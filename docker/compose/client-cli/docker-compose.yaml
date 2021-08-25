@@ -1,0 +1,44 @@
+# This compose file launches a client which will interact with the faucet and validator.
+# The faucet can be accessed at 127.0.0.1:8000
+
+version: "3.8"
+services:
+  client-cli:
+    image: "dijets/client:${IMAGE_TAG:-devnet}"
+    networks:
+      shared:
+    volumes:
+      - type: volume
+        source: dijets-shared
+        target: /opt/dijets/var
+    entrypoint: /bin/bash
+    command: >
+      -c '
+        for i in {1..10}
+        do
+            if [[ -s /opt/dijets/var/waypoint.txt ]]
+            then
+                echo "Waypoint: `cat /opt/dijets/var/waypoint.txt`\n"
+                /opt/dijets/bin/dijets_client \
+                    --url http://validator:8080/v1 \
+                    --faucet-url http://faucet:8000 \
+                    --chain-id TESTING \
+                    --waypoint `cat /opt/dijets/var/waypoint.txt`
+                exit $$?
+            else
+                echo "Validator has not populated waypoint.txt yet. Is it running?"
+                sleep 1
+            fi
+        done
+        exit 1
+      '
+networks:
+  shared:
+    name: "dijets-docker-compose-shared"
+    ipam:
+      config:
+        - subnet: 172.16.1.0/24
+
+volumes:
+  dijets-shared:
+    name: dijets-shared
