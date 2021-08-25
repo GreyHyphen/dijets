@@ -1,0 +1,20 @@
+[package]
+name = "dijets-json-rpc-client"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets JSONRPC client"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+futures = "0.3.12"
+rand = "0.8.3"
+
+dijets-crypto = { path = "../../crypto/crypto" }
+dijets-json-rpc-types  = { path = "../../json-rpc/types" }
+dijets-types = { path = "../../types" }
+dijets-workspace-hack = { path = "../../common/workspace-hack" }
+dijets-client = { path = "../../sdk/client" }
