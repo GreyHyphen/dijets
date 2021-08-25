@@ -1,0 +1,35 @@
+[package]
+name = "network-builder"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets Onchain Discovery Protocol"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+futures = "0.3.12"
+rand = "0.8.3"
+serde = { version = "1.0.124", default-features = false }
+tokio = { version = "1.8.1", features = ["full"] }
+
+channel = { path = "../../common/channel" }
+bcs = "0.1.2"
+dijets-config = { path = "../../config" }
+dijets-crypto = { path = "../../crypto/crypto" }
+dijets-infallible = { path = "../../common/infallible" }
+dijets-logger = { path = "../../common/logger" }
+dijets-metrics = {path = "../../common/metrics"}
+dijets-network-address-encryption = {path = "../../config/management/network-address-encryption"}
+dijets-secure-storage = { path = "../../secure/storage" }
+dijets-time-service = { path = "../../common/time-service", features = ["async"] }
+dijets-types = { path = "../../types" }
+dijets-workspace-hack = { path = "../../common/workspace-hack" }
+netcore = { path = "../netcore" }
+network = { path = "../." }
+network-discovery = { path = "../discovery" }
+subscription-service = { path = "../../common/subscription-service" }
