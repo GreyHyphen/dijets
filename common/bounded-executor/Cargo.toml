@@ -1,0 +1,18 @@
+[package]
+name = "bounded-executor"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets bounded executor"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+futures = "0.3.12"
+dijets-workspace-hack = { path = "../workspace-hack" }
+tokio = { version = "1.8.1", features = ["sync"] }
+
+[dev-dependencies]
+tokio = { version = "1.8.1", features = ["full"] }

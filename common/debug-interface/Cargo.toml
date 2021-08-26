@@ -1,0 +1,21 @@
+[package]
+name = "debug-interface"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets debug interface"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.38"
+bytes = "1.0.1"
+tokio = { version = "1.8.1", features = ["full"] }
+reqwest = { version = "0.11.2", features = ["blocking", "json"], default_features = false }
+warp = "0.3.0"
+
+dijets-logger = { path = "../logger" }
+dijets-metrics = { path = "../metrics" }
+dijets-workspace-hack = { path = "../workspace-hack" }

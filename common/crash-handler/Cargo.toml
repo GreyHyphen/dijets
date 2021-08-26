@@ -1,0 +1,18 @@
+[package]
+name = "crash-handler"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets crash handler"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+backtrace = "0.3.56"
+toml = "0.5.8"
+
+dijets-logger = { path = "../logger" }
+dijets-workspace-hack = { path = "../workspace-hack" }
+serde = { version = "1.0.124", features = ["derive"] }

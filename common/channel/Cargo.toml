@@ -1,0 +1,21 @@
+[package]
+name = "channel"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets channel"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.38"
+futures = "0.3.12"
+dijets-metrics = { path = "../metrics" }
+dijets-infallible = { path = "../infallible" }
+dijets-workspace-hack = { path = "../workspace-hack" }
+
+[dev-dependencies]
+dijets-types = { path = "../../types"  }
+tokio = { version = "1.8.1", features = ["full"] }
