@@ -1,0 +1,36 @@
+[package]
+name = "dijets-transaction-replay"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Replay transactions stored on chain"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.38"
+structopt = "0.3.21"
+hex = "0.4.3"
+dijets-workspace-hack = { path = "../../../common/workspace-hack" }
+dijets-types = { path = "../../../types" }
+dijets-state-view = { path = "../../../storage/state-view" }
+dijets-validator-interface = { path = "../dijets-validator-interface" }
+dijetsdb = { path = "../../../storage/dijetsdb" }
+dijets-vm = { path = "../../dijets-vm" }
+move-binary-format = { path = "../../move-binary-format"}
+move-cli = { path = "../../tools/move-cli" }
+move-vm-types = { path = "../../move-vm/types" }
+move-core-types = { path = "../../move-core/types" }
+move-vm-runtime = { path = "../../move-vm/runtime" }
+move-vm-test-utils = { path = "../../move-vm/test-utils" }
+dijets-resource-viewer = { path = "../../tools/dijets-resource-viewer" }
+dijets-framework = { path = "../../dijets-framework" }
+move-lang = { path = "../../move-lang" }
+bcs = "0.1.2"
+difference = "2.0.0"
+
+[dev-dependencies]
+vm-genesis = { path = "../../tools/vm-genesis" }
+dijets-framework-releases = { path = "../../dijets-framework/releases" }

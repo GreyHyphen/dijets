@@ -1,0 +1,32 @@
+[package]
+name = "move-oncall-trainer"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Create a playground for oncall to use existing toolchains to debug the network"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.38"
+structopt = "0.3.21"
+tempfile = "3.2.0"
+nix = "0.20.0"
+rustyline = "8.0.0"
+gag = "0.1.10"
+bcs = "0.1.2"
+
+cli = { path = "../../../testsuite/cli" }
+dijets-client = { path = "../../../sdk/client/"}
+dijets-config = { path = "../../../config" }
+dijets-framework-releases = { path = "../../dijets-framework/releases"}
+dijets-genesis-tool = { path = "../../../config/management/genesis" }
+dijets-json-rpc-types = { path = "../../../json-rpc/types" }
+dijets-types = { path = "../../../types" }
+dijets-node = { path = "../../../dijets-node"}
+dijets-temppath = { path = "../../../common/temppath" }
+dijets-workspace-hack = { path = "../../../common/workspace-hack" }

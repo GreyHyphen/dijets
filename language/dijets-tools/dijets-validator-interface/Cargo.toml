@@ -1,0 +1,23 @@
+[package]
+name = "dijets-validator-interface"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Defines interfaces between the dijets nodes and local move infrastructure"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.38"
+dijets-config = { path = "../../../config" }
+dijets-client = { path = "../../../sdk/client" }
+dijets-types = { path = "../../../types" }
+dijetsdb = { path = "../../../storage/dijetsdb" }
+dijets-workspace-hack = { path = "../../../common/workspace-hack" }
+storage-interface = { path = "../../../storage/storage-interface" }
+scratchpad = { path = "../../../storage/scratchpad" }
+dijets-state-view = { path = "../../../storage/state-view" }
+move-binary-format = { path = "../../move-binary-format" }
+bcs = "0.1.2"

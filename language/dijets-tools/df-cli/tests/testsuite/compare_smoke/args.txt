@@ -1,0 +1,2 @@
+sandbox publish src/modules --mode dijets
+sandbox run src/scripts/set.move --mode dijets --dry-run

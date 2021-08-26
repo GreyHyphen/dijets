@@ -1,0 +1,26 @@
+[package]
+name = "dijets-e2e-tests-replay"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "A tool that reconstructs and replays test cases from the trace dump of E2E tests"
+license = "Apache-2.0"
+edition = "2018"
+publish = false
+
+[dependencies]
+anyhow = "1.0.38"
+bcs = "0.1.2"
+structopt = "0.3.21"
+walkdir = "2.3.1"
+
+dijets-workspace-hack = { path = "../../../common/workspace-hack" }
+bytecode-interpreter = { path = "../../move-prover/interpreter" }
+dijets-types = { path = "../../../types", features = ["fuzzing"] }
+dijets-framework = { path = "../../dijets-framework" }
+dijets-vm = { path = "../../dijets-vm" }
+language-e2e-tests = { path = "../../testing-infra/e2e-tests" }
+move-binary-format = { path = "../../move-binary-format" }
+move-core-types = { path = "../../move-core/types" }
+move-model = { path = "../../move-model" }
+move-vm-runtime = { path = "../../move-vm/runtime" }
+move-vm-types = { path = "../../move-vm/types" }

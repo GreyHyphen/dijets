@@ -1,0 +1,18 @@
+[package]
+name = "dijets-read-write-set"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Read/write set inference for Dijets transactions"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+anyhow = "1.0.38"
+dijets-workspace-hack = { path = "../../../common/workspace-hack" }
+dijets-types = { path = "../../../types" }
+dijets-vm = { path = "../../dijets-vm" }
+move-core-types = { path = "../../move-core/types" }
+read-write-set = { path = "../../tools/read-write-set" }
