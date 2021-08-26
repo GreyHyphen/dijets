@@ -1,0 +1,15 @@
+[package]
+name = "fallible"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets dijets-infallible"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+thiserror = "1.0"
+
+dijets-workspace-hack = { path = "../workspace-hack" }
