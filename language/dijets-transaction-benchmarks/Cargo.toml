@@ -1,0 +1,24 @@
+[package]
+name = "dijets-transaction-benchmarks"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets transaction benchmarks"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+criterion = "0.3.4"
+proptest = "1.0.0"
+criterion-cpu-time = "0.1.0"
+
+dijets-types = { path = "../../types", features = ["fuzzing"] }
+language-e2e-tests = { path = "../testing-infra/e2e-tests" }
+dijets-workspace-hack = { path = "../../common/workspace-hack" }
+
+
+[[bench]]
+name = "transaction_benches"
+harness = false
