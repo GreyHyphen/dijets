@@ -1,0 +1,16 @@
+[package]
+name = "dijets-proptest-helpers"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets proptest helpers"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+crossbeam = "0.8.0"
+dijets-workspace-hack = { path = "../workspace-hack" }
+proptest = "1.0.0"
+proptest-derive = "0.3.0"

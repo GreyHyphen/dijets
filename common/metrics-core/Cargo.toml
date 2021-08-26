@@ -1,0 +1,14 @@
+[package]
+name = "dijets-metrics-core"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets dijets-metrics-core"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+dijets-workspace-hack = { path = "../workspace-hack" }
+prometheus = { version = "0.12.0", default-features = false }

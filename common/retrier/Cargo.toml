@@ -1,0 +1,15 @@
+[package]
+name = "dijets-retrier"
+version = "0.1.0"
+authors = ["Dijets Association <opensource@dijets.com>"]
+description = "Dijets implementation for retries of operations"
+repository = "https://github.com/dijets/dijets"
+homepage = "https://dijets.com"
+license = "Apache-2.0"
+publish = false
+edition = "2018"
+
+[dependencies]
+dijets-workspace-hack = { path = "../workspace-hack" }
+tokio = { version = "1.8.1", features = ["time"] }
+dijets-logger = { path = "../logger"}
