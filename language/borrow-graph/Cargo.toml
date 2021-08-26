@@ -1,0 +1,11 @@
+[package]
+name = "borrow-graph"
+version = "0.0.1"
+authors = ["Dijets Association <opensource@dijets.com>"]
+publish = false
+edition = "2018"
+license = "Apache-2.0"
+
+[dependencies]
+dijets-workspace-hack = { path = "../../common/workspace-hack" }
+mirai-annotations = "1.10.1"
